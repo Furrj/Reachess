@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-
-import BlackBishop from "./pieces/BlackBishop";
+import React, { useRef } from "react";
 
 interface IProps {
   id: string;
@@ -9,20 +7,16 @@ interface IProps {
 }
 
 const Square: React.FC<IProps> = ({ id, currentPiece, type }) => {
-  var thisPiece: HTMLDivElement | null = null;
-
-  useEffect(() => {
-    thisPiece = document.querySelector(`#${id}`);
-  }, []);
+  const thisSquare: React.RefObject<HTMLDivElement> = useRef(null);
 
   const onClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    if (thisPiece) {
-      thisPiece.style.backgroundColor = "red";
+    if (thisSquare.current) {
+      thisSquare.current.style.backgroundColor = "red";
     }
   };
 
   return (
-    <div className={type} id={id} onClick={onClick}>
+    <div className={type} id={id} onClick={onClick} ref={thisSquare}>
       {currentPiece}
     </div>
   );
