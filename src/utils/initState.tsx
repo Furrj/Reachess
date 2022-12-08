@@ -116,7 +116,7 @@ export const initState: squareObj[][] = [
       y: 2,
     },
     {
-      name: "H1",
+      name: "H2",
       piece: <WhitePawn />,
       x: 8,
       y: 2,

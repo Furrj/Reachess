@@ -8,14 +8,14 @@ import Square from "./components/Square";
 import { initState, squareObj } from "./utils/initState";
 
 const App: React.FC = () => {
-  const [gameState, setGameState] = useState<squareObj[]>([]);
+  const [gameState, setGameState] = useState<squareObj[][]>(initState);
 
   const content: JSX.Element[] = [];
 
   for (let i = 1; i <= 8; i++) {
     let row: JSX.Element[] = [];
     for (let j = 1; j <= 8; j++) {
-      const currentSquare: squareObj = initState[i - 1][j - 1];
+      const currentSquare: squareObj = gameState[i - 1][j - 1];
       if (i % 2 === 1 && j % 2 === 1) {
         row.push(
           <Square
