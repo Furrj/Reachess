@@ -1,6 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
+//TS
 import { squareObj } from "../utils/initState";
+
+//MOVEMENT
+import * as mvmt from "../utils/Movement";
 
 //PIECES
 import WhiteKing from "./pieces/WhiteKing";
@@ -35,6 +39,8 @@ const Square: React.FC<IProps> = ({
   gameState,
   setGameState,
 }) => {
+  const [moving, setMoving] = useState<boolean>(false);
+
   const thisSquare: React.RefObject<HTMLDivElement> = useRef(null);
   let thisPiece: JSX.Element | null = null;
 
@@ -81,11 +87,18 @@ const Square: React.FC<IProps> = ({
     if (thisSquare.current) {
       switch (currentPiece) {
         case "WhitePawn":
-          thisSquare.current.style.backgroundColor = "red";
-          console.log(gameState[y][x]);
+          if (!moving) {
+            mvmt.PreWhitePawnMovement(
+              thisSquare,
+              currentPiece,
+              gameState,
+              setGameState,
+              x,
+              y
+            );
+          }
           break;
         case "BlackPawn":
-          thisSquare.current.style.backgroundColor = "green";
           break;
       }
     }

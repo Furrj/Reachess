@@ -3,6 +3,8 @@ export interface squareObj {
   piece: string | null;
   x: number;
   y: number;
+  possibleMove?: boolean;
+  possibleMovePiece?: string;
 }
 
 export const initState: squareObj[][] = [
