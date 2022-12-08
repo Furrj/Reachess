@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 
+import { squareObj } from "../utils/initState";
+
 //PIECES
 import WhiteKing from "./pieces/WhiteKing";
 import WhiteQueen from "./pieces/WhiteQueen";
@@ -18,9 +20,21 @@ interface IProps {
   id: string;
   currentPiece: string | null;
   type: string;
+  x: number;
+  y: number;
+  gameState: squareObj[][];
+  setGameState: React.Dispatch<React.SetStateAction<squareObj[][]>>;
 }
 
-const Square: React.FC<IProps> = ({ id, currentPiece, type }) => {
+const Square: React.FC<IProps> = ({
+  id,
+  currentPiece,
+  type,
+  x,
+  y,
+  gameState,
+  setGameState,
+}) => {
   const thisSquare: React.RefObject<HTMLDivElement> = useRef(null);
   let thisPiece: JSX.Element | null = null;
 
@@ -65,7 +79,15 @@ const Square: React.FC<IProps> = ({ id, currentPiece, type }) => {
 
   const onClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     if (thisSquare.current) {
-      thisSquare.current.style.backgroundColor = "red";
+      switch (currentPiece) {
+        case "WhitePawn":
+          thisSquare.current.style.backgroundColor = "red";
+          console.log(gameState[y][x]);
+          break;
+        case "BlackPawn":
+          thisSquare.current.style.backgroundColor = "green";
+          break;
+      }
     }
   };
 

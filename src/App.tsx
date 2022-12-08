@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 //COMPS
 import Row from "./components/Row";
@@ -23,6 +23,10 @@ const App: React.FC = () => {
             id={currentSquare.name}
             currentPiece={currentSquare.piece}
             type="darkSquare"
+            x={currentSquare.x}
+            y={currentSquare.y}
+            gameState={gameState}
+            setGameState={setGameState}
           />
         );
       } else if (i % 2 === 1 && j % 2 === 0) {
@@ -32,6 +36,10 @@ const App: React.FC = () => {
             id={currentSquare.name}
             currentPiece={currentSquare.piece}
             type="lightSquare"
+            x={currentSquare.x}
+            y={currentSquare.y}
+            gameState={gameState}
+            setGameState={setGameState}
           />
         );
       } else if (i % 2 === 0 && j % 2 === 1) {
@@ -41,6 +49,10 @@ const App: React.FC = () => {
             id={currentSquare.name}
             currentPiece={currentSquare.piece}
             type="lightSquare"
+            x={currentSquare.x}
+            y={currentSquare.y}
+            gameState={gameState}
+            setGameState={setGameState}
           />
         );
       } else if (i % 2 === 0 && j % 2 === 0) {
@@ -50,6 +62,10 @@ const App: React.FC = () => {
             id={currentSquare.name}
             currentPiece={currentSquare.piece}
             type="darkSquare"
+            x={currentSquare.x}
+            y={currentSquare.y}
+            gameState={gameState}
+            setGameState={setGameState}
           />
         );
       }
@@ -58,11 +74,7 @@ const App: React.FC = () => {
     content.push(<Row key={`Row${i}`} squares={row} />);
   }
 
-  return (
-    <div id="board">
-      {content}
-    </div>
-  );
+  return <div id="board">{content}</div>;
 };
 
 export default App;
