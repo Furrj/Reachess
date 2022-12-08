@@ -1,22 +1,6 @@
-//PIECES
-import WhiteKing from "../components/pieces/WhiteKing";
-import WhiteQueen from "../components/pieces/WhiteQueen";
-import WhiteRook from "../components/pieces/WhiteRook";
-import WhiteBishop from "../components/pieces/WhiteBishop";
-import WhiteKnight from "../components/pieces/WhiteKnight";
-import WhitePawn from "../components/pieces/WhitePawn";
-
-import BlackKing from "../components/pieces/BlackKing";
-import BlackQueen from "../components/pieces/BlackQueen";
-import BlackRook from "../components/pieces/BlackRook";
-import BlackBishop from "../components/pieces/BlackBishop";
-import BlackKnight from "../components/pieces/BlackKnight";
-import BlackPawn from "../components/pieces/BlackPawn";
-
-
 export interface squareObj {
   name: string;
-  piece: string | null | JSX.Element;
+  piece: string | null;
   x: number;
   y: number;
 }
@@ -25,49 +9,49 @@ export const initState: squareObj[][] = [
   [
     {
       name: "A1",
-      piece: <WhiteRook />,
+      piece: "WhiteRook",
       x: 1,
       y: 1,
     },
     {
       name: "B1",
-      piece: <WhiteKnight />,
+      piece: "WhiteKnight",
       x: 2,
       y: 1,
     },
     {
       name: "C1",
-      piece: <WhiteBishop />,
+      piece: "WhiteBishop",
       x: 3,
       y: 1,
     },
     {
       name: "D1",
-      piece: <WhiteQueen />,
+      piece: "WhiteQueen",
       x: 4,
       y: 1,
     },
     {
       name: "E1",
-      piece: <WhiteKing />,
+      piece: "WhiteKing",
       x: 5,
       y: 1,
     },
     {
       name: "F1",
-      piece: <WhiteBishop />,
+      piece: "WhiteBishop",
       x: 6,
       y: 1,
     },
     {
       name: "G1",
-      piece: <WhiteKnight />,
+      piece: "WhiteKnight",
       x: 7,
       y: 1,
     },
     {
       name: "H1",
-      piece: <WhiteRook />,
+      piece: "WhiteRook",
       x: 8,
       y: 1,
     },
@@ -75,49 +59,49 @@ export const initState: squareObj[][] = [
   [
     {
       name: "A2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 1,
       y: 2,
     },
     {
       name: "B2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 2,
       y: 2,
     },
     {
       name: "C2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 3,
       y: 2,
     },
     {
       name: "D2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 4,
       y: 2,
     },
     {
       name: "E2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 5,
       y: 2,
     },
     {
       name: "F2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 6,
       y: 2,
     },
     {
       name: "G2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 7,
       y: 2,
     },
     {
       name: "H2",
-      piece: <WhitePawn />,
+      piece: "WhitePawn",
       x: 8,
       y: 2,
     },
@@ -325,49 +309,49 @@ export const initState: squareObj[][] = [
   [
     {
       name: "A7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 1,
       y: 7,
     },
     {
       name: "B7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 2,
       y: 7,
     },
     {
       name: "C7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 3,
       y: 7,
     },
     {
       name: "D7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 4,
       y: 7,
     },
     {
       name: "E7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 5,
       y: 7,
     },
     {
       name: "F7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 6,
       y: 7,
     },
     {
       name: "G7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 7,
       y: 7,
     },
     {
       name: "H7",
-      piece: <BlackPawn />,
+      piece: "BlackPawn",
       x: 8,
       y: 7,
     },
@@ -375,49 +359,49 @@ export const initState: squareObj[][] = [
   [
     {
       name: "A8",
-      piece: <BlackRook />,
+      piece: "BlackRook",
       x: 1,
       y: 8,
     },
     {
       name: "B8",
-      piece: <BlackKnight />,
+      piece: "BlackKnight",
       x: 2,
       y: 8,
     },
     {
       name: "C8",
-      piece: <BlackBishop />,
+      piece: "BlackBishop",
       x: 3,
       y: 8,
     },
     {
       name: "D8",
-      piece: <BlackQueen />,
+      piece: "BlackQueen",
       x: 4,
       y: 8,
     },
     {
       name: "E8",
-      piece: <BlackKing />,
+      piece: "BlackKing",
       x: 5,
       y: 8,
     },
     {
       name: "F8",
-      piece: <BlackBishop />,
+      piece: "BlackBishop",
       x: 6,
       y: 8,
     },
     {
       name: "G8",
-      piece: <BlackKnight />,
+      piece: "BlackKnight",
       x: 7,
       y: 8,
     },
     {
       name: "H8",
-      piece: <BlackRook />,
+      piece: "BlackRook",
       x: 8,
       y: 8,
     },
