@@ -3,8 +3,10 @@ export interface squareObj {
   piece: string | null;
   x: number;
   y: number;
-  possibleMove?: boolean;
-  possibleMovePiece?: string;
+  preSelected?: boolean | null;
+  possibleMove?: boolean | null;
+  possibleMovePiece?: string | null;
+  comingFrom?: number[] | null;
 }
 
 export const initState: squareObj[][] = [

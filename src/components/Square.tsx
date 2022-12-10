@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 //TS
 import { squareObj } from "../utils/initState";
@@ -40,13 +40,25 @@ const Square: React.FC<IProps> = ({
   setGameState,
 }) => {
   const [moving, setMoving] = useState<boolean>(false);
+  const [piece, setPiece] = useState<string | null>(currentPiece);
 
   const thisSquare: React.RefObject<HTMLDivElement> = useRef(null);
+  const thisSquareData: squareObj = gameState[y][x];
+  const { possibleMove, possibleMovePiece, comingFrom, preSelected }: squareObj =
+    gameState[y][x];
   let thisPiece: JSX.Element | null = null;
 
-  switch (currentPiece) {
+  useEffect(() => {
+    setPiece(currentPiece);
+    if (preSelected === false) {
+      setMoving(preSelected);
+    }
+    console.log("UseEffect triggered");
+  }, [currentPiece, preSelected]);
+
+  switch (piece) {
     case "WhitePawn":
-      thisPiece = <WhitePawn />;
+      thisPiece = (<WhitePawn />);
       break;
     case "WhiteKing":
       thisPiece = <WhiteKing />;
@@ -87,18 +99,32 @@ const Square: React.FC<IProps> = ({
     if (thisSquare.current) {
       switch (currentPiece) {
         case "WhitePawn":
-          if (!moving) {
-            mvmt.PreWhitePawnMovement(
-              thisSquare,
-              currentPiece,
-              gameState,
-              setGameState,
-              x,
-              y
-            );
-          }
+          mvmt.PreWhitePawnMovement(
+            thisSquare,
+            currentPiece,
+            gameState,
+            setGameState,
+            x,
+            y,
+            moving,
+            setMoving
+          );
           break;
-        case "BlackPawn":
+        case "":
+          if (possibleMove && possibleMovePiece && comingFrom) {
+            const fromSquare: squareObj = gameState[comingFrom[0]][comingFrom[1]]
+            fromSquare.piece = "";
+            fromSquare.preSelected = false;
+            thisSquareData.piece = possibleMovePiece;
+            thisSquareData.possibleMove = false;
+            thisSquareData.possibleMovePiece = "";
+            thisSquareData.comingFrom = null;
+            const newState: squareObj[][] = [...gameState]
+            newState[y][x] = {...thisSquareData};
+            newState[comingFrom[0]][comingFrom[1]] = {...fromSquare};
+            setGameState(newState);
+            console.log(gameState[y][x]);
+          }
           break;
       }
     }
